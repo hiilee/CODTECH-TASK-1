@@ -20,21 +20,26 @@ Special Character: Should contain at least one special character (non-alphanumer
 Based on how many of these criteria the password meets, it categorizes the strength of the password into five levels: Very Weak, Weak, Moderate, Strong, and Very Strong.
 
 Activities:
+
 Importing Modules: The code starts by importing the re module for regular expressions.
 Function Definition (assess_password_strength):
+
 Defines a function assess_password_strength that takes a password as input and evaluates it against the specified criteria using regular expressions.
 Checks each criterion using regular expressions to determine if the password contains the required characters or meets the length requirement.
 Calculates criteria_met which counts how many criteria the password satisfies.
 Determines the strength of the password based on criteria_met.
 Constructs a feedback dictionary providing detailed feedback on which criteria the password meets or fails.
 Main Function (main):
+
 Implements an interactive loop (while True:) where the user can input passwords to assess.
 Displays a menu and prompts the user to enter a password.
 Evaluates the entered password using assess_password_strength.
 Prints the strength level of the password (Very Weak, Weak, Moderate, Strong, or Very Strong).
 Outputs feedback for each criteria (whether it's met or not).
 Allows the user to exit the program by typing 'exit'.
+
 Conclusion:
+
 The code effectively provides a basic password strength assessment tool that:
 
 Checks for minimum length and presence of various character types in a password.
