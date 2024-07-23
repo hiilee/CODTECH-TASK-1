@@ -1,0 +1,51 @@
+import re
+
+def assess_password_strength(password):
+    length_criteria = len(password) >= 8
+    uppercase_criteria = bool(re.search(r'[A-Z]', password))
+    lowercase_criteria = bool(re.search(r'[a-z]', password))
+    number_criteria = bool(re.search(r'\d', password))
+    special_char_criteria = bool(re.search(r'[\W_]', password))  # \W matches any non-word character
+    
+    criteria_met = sum([length_criteria, uppercase_criteria, lowercase_criteria, number_criteria, special_char_criteria])
+    
+    if criteria_met == 5:
+        strength = "Very Strong"
+    elif criteria_met == 4:
+        strength = "Strong"
+    elif criteria_met == 3:
+        strength = "Moderate"
+    elif criteria_met == 2:
+        strength = "Weak"
+    else:
+        strength = "Very Weak"
+    
+    feedback = {
+        "Length (8+ characters)": length_criteria,
+        "Uppercase letter": uppercase_criteria,
+        "Lowercase letter": lowercase_criteria,
+        "Number": number_criteria,
+        "Special character": special_char_criteria
+    }
+    
+    return strength, feedback
+
+def main():
+    while True:
+        print("Password Strength Assessment Tool")
+        password = input("Enter a password to assess (or 'exit' to quit): ")
+        
+        if password.lower() == 'exit':
+            print("Exiting the program.")
+            break
+        
+        strength, feedback = assess_password_strength(password)
+        
+        print(f"Password Strength: {strength}")
+        print("Criteria Met:")
+        for criterion, met in feedback.items():
+            print(f"  {criterion}: {'Yes' if met else 'No'}")
+        print("\n")
+
+if __name__ == "__main__":
+    main()
